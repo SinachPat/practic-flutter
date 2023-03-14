@@ -1,0 +1,36 @@
+Mobile Engineering Development Plan
+* User the Freecodecamp course to learn the basic parts of the dart programming language.
+* Solidify the knowledge with the whole resources here. (24th February - 3rd March).
+* Go back and Continue building the Freecodecamp project. (3rd March - 15th March).
+* Read through everything on this website here. (March 15th - 5th April).
+* Read through everything on this website here. (5th April - 26th April).
+* Read through everything on this website here. (27th April - 25th May).
+* Finally Read through this Roadmap here. (25th May - 25th June).
+* Start building solid products, producing tutorial contents and making some money.
+* Read the two Dart Books I have to read for the year.
+
+
+Dart-Tutorials Website Notes
+
+
+Lists
+– To access the first and last element of a list you use: .last and .first
+
+
+void main() {
+   List<String> drinks = ["water", "juice", "milk", "coke"];
+   print("First element of the List is: ${drinks.first}");
+   print("Last element of the List is: ${drinks.last}");
+}
+
+
+– Check if the list is empty or not:
+void main() {
+   List<String> drinks = ["water", "juice", "milk", "coke"];
+   List<int>  ages = [];
+   print("Is drinks Empty: "+drinks.isEmpty.toString());
+   print("Is drinks not Empty: "+drinks.isNotEmpty.toString());
+   print("Is ages Empty: "+ages.isEmpty.toString());
+   print("Is ages not Empty: "+ages.isNotEmpty.toString());
+   
+}
