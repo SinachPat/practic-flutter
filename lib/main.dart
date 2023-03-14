@@ -1,80 +1,81 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const DogApp());
+  runApp(
+    const MaterialApp(
+      title: 'My app', // used by the OS task switcher
+      home: SafeArea(
+        child: MyScaffold(),
+      ),
+    ),
+  );
 }
 
-class DogApp extends StatelessWidget {
-  const DogApp({super.key});
+class MyAppBar extends StatelessWidget {
+  const MyAppBar({required this.title, super.key});
+  // Fields in a Widget subclass are always marked "final".
+
+  final Widget title;
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "My Dog App",
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Dog App"),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(100.0),
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.all(15.0),
-                  child: Text(
-                    "Click!",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(100.0),
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.all(15.0),
-                  child: Text(
-                    "Here!",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(100.0),
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.all(15.0),
-                  child: Text(
-                    "Now Now!",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-            ],
+    return Container(
+      height: 56.0, // in logical pixels
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      decoration: BoxDecoration(color: Colors.blue[900]),
+      // Row is a horizontal, linear layout.
+      child: Row(
+        children: [
+          const IconButton(
+            icon: Icon(
+              Icons.menu,
+            ),
+            tooltip: 'Navigation menu',
+            onPressed: null, // null disables the button
           ),
-        ),
+          // Expanded expands its child
+          // to fill the available space.
+          Expanded(
+            child: title,
+          ),
+          const IconButton(
+            icon: Icon(Icons.search),
+            tooltip: 'Search',
+            onPressed: null,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MyScaffold extends StatelessWidget {
+  const MyScaffold({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // Material is a conceptual piece
+    // of paper on which the UI appears.
+    return Material(
+      // Column is a vertical, linear layout.
+      child: Column(
+        children: [
+          MyAppBar(
+            title: Center(
+              child: Text(
+                'Practicals',
+                style: Theme.of(context) //
+                    .primaryTextTheme
+                    .titleLarge,
+              ),
+            ),
+          ),
+          const Expanded(
+            child: Center(
+              child: Text('Hello, world!'),
+            ),
+          ),
+        ],
       ),
     );
   }
