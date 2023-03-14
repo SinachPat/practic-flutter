@@ -6,7 +6,6 @@ void main() {
 
 class DogApp extends StatelessWidget {
   const DogApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
