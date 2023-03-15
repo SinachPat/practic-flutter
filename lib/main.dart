@@ -24,7 +24,7 @@ class MyButton extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(
-            height: 200.0,
+            height: 170.0,
           ),
           Container(
             height: 60.0,
