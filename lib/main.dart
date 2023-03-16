@@ -5,71 +5,55 @@ void main() {
     const MaterialApp(
       home: Scaffold(
         body: Center(
-          child: MyButton(),
+          child: Counter(),
         ),
       ),
     ),
   );
 }
 
-class MyButton extends StatelessWidget {
-  const MyButton({super.key});
+class Counter extends StatefulWidget {
+  const Counter({super.key});
+
+  @override
+  State<Counter> createState() => _CounterState();
+}
+
+class _CounterState extends State<Counter> {
+  int _counter = 40;
+  void _increment() {
+    setState(() {
+      _counter--;
+    });
+  }
+
+  void _reset() {
+    setState(() {
+      int countNewValue = 40;
+      _counter = countNewValue;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        print('MyButton was tapped!');
-      },
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 170.0,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text("Counter value: $_counter"),
+        const SizedBox(height: 20),
+        ElevatedButton(
+          onPressed: _increment,
+          child: const Text('Decrement'),
+        ),
+        const SizedBox(width: 15),
+        ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
           ),
-          Container(
-            height: 60.0,
-            padding: const EdgeInsets.all(8.0),
-            margin: const EdgeInsets.symmetric(horizontal: 40.0),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Enter your name',
-              ),
-            ),
-          ),
-          Container(
-            height: 60.0,
-            padding: const EdgeInsets.all(8.0),
-            margin: const EdgeInsets.symmetric(horizontal: 40.0),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Enter your email',
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 20.0,
-          ),
-          Container(
-            height: 50.0,
-            padding: const EdgeInsets.all(8.0),
-            margin: const EdgeInsets.symmetric(horizontal: 40.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5.0),
-              color: const Color.fromARGB(255, 0, 192, 106),
-            ),
-            child: const Center(
-              child: Text(
-                'Sign In',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          )
-        ],
-      ),
+          onPressed: _reset,
+          child: const Text('Reset'),
+        )
+      ],
     );
   }
 }
